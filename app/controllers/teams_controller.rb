@@ -16,6 +16,7 @@ class TeamsController < ApplicationController
   def create
   	@team = current_user.teams.build(team_params)
     if @team.save
+      @team.join!(current_user)
       flash[:success] = "Team created!"
       redirect_to root_url
     else

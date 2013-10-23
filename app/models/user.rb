@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :teams, dependent: :destroy
 
   has_many :relationships
+
+  # has_many :joined_teams, through: :relationships, source: :teams
+  has_many :joined_teams, :through => :relationships, :source => :team
   
 	before_save { self.email = email.downcase }
 

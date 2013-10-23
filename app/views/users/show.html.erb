@@ -14,7 +14,7 @@
   </aside>
   <div class="span8">
     <% if @user.teams.any? %>
-      <h3>Own Teams (<%= @user.teams.count %>)</h3>
+      <h3>Joined Teams (<%= @user.joined_teams.count %>)</h3>
       <ol class="microposts">
         <%= render @teams %>
       </ol>
