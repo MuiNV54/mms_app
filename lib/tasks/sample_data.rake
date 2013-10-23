@@ -25,11 +25,11 @@ namespace :db do
     end
 
     teams = Team.all(limit: 10)
-    teams.each { |team| 
-                20.times do
-                user = User.first(:offset => rand(User.count))
-                Relationship.create!(team_id: team.id, user_id:  user.id) if Relationship.find_by(team_id: team.id, user_id:  user.id).nil?
-            end
+    users = User.all(limit: 10)
+    teams.each { |team|
+      users.each { |user|
+        team.join!(user)
+      } 
     }
   end
 end

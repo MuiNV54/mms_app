@@ -3,15 +3,14 @@ class TeamsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @teams = Team.all
-    # @teams = Team.paginate(page: params[:page])
+    @teams = Team.paginate(page: params[:page], per_page: 3)
   end
 
   def show
     @team = Team.find(params[:id])
     
-    @members = @team.joined_users.paginate(page: params[:page])
-    @relationships = @team.relationships.paginate(page: params[:page])
+    @members = @team.joined_users.paginate(page: params[:page], per_page: 3)
+    @relationships = @team.relationships.paginate(page: params[:page], per_page: 3)
   end
   
   def create
