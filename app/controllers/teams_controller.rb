@@ -3,7 +3,8 @@ class TeamsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @teams = Team.paginate(page: params[:page])
+    @teams = Team.all
+    # @teams = Team.paginate(page: params[:page])
   end
 
   def show
