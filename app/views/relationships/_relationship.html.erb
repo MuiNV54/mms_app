@@ -1,0 +1,9 @@
+  <li>
+	  <%= gravatar_for relationship.user %>
+	  <%= link_to relationship.user.name, relationship.user %>
+
+	  <% if current_user?(@team.user) %>
+    <br/><%= link_to "delete", relationship, method: :delete,
+                                     data: { confirm: "You sure?" }%>
+  <% end %>
+	</li>

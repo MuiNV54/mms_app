@@ -1,0 +1,25 @@
+<% provide(:title, @team.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @team.name %>
+      </h1>
+      <span>
+        Owner: <%= link_to @team.user.name, @team.user %>
+      </span>
+    </section>
+  </aside>
+   <div class="span8">
+
+    <%= render 'join_form' if signed_in? %>
+    <% if @members.any? %>
+      <h3>Members (<%= @team.relationships.count %>)</h3>
+      <ol class="users">
+        <%=
+        render @relationships
+        %>
+      </ol>
+    <% end %>
+  </div>
+</div>

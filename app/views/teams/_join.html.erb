@@ -1,0 +1,4 @@
+<%= form_for(@team.relationships.build(team_id: @team.id)) do |f| %>
+  <div><%= f.hidden_field :team_id %></div>
+  <%= f.submit "Join", class: "btn btn-large btn-primary" %>
+<% end %>

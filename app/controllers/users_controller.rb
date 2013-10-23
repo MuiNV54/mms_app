@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
 	def show
     @user = User.find(params[:id])
+    @teams = @user.teams.paginate(page: params[:page])
   end
 
   def new

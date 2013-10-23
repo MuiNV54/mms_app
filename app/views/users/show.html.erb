@@ -4,8 +4,21 @@
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.name %> 
+        ( age: <%= @user.age %> )
       </h1>
+      <h2>
+       email: <%= @user.email %>
+      </h2>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.teams.any? %>
+      <h3>Own Teams (<%= @user.teams.count %>)</h3>
+      <ol class="microposts">
+        <%= render @teams %>
+      </ol>
+      <%= will_paginate @teams %>
+    <% end %>
+  </div>
 </div>
